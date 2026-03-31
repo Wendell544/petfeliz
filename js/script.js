@@ -1,415 +1,494 @@
+// ======================== BANCO DE CONTEÚDO 100% PERSONALIZADO ========================
+const CONTENT_DB = {
+  cachorro: {
+    filhote: {
+      recipes: [
+        { name: "🥣 Super Leite Materno Artificial", ingredients: "Leite específico, gema de ovo, probiótico", prep: "Morno, oferecer 4x ao dia", qty: "15ml/kg", tip: "Fortalecimento imunológico" },
+        { name: "🍲 Patê Energético de Frango e Batata", ingredients: "Peito frango, batata-doce, óleo de coco", prep: "Cozer e triturar", qty: "30g/kg", tip: "Alto teor proteico" },
+        { name: "🥩 Mix Anti-Anêmico", ingredients: "Coração, fígado, cenoura", prep: "Cozer e amassar", qty: "25g/kg", tip: "Ferro heme para desenvolvimento" },
+        { name: "🐟 Ômega 3 Power", ingredients: "Sardinha, abóbora, espinafre", prep: "Cozer e servir", qty: "20g/kg", tip: "Essencial para neurodesenvolvimento" }
+      ],
+      trainings: [
+        { title: "🎾 Socialização Precoce", steps: "Apresentar pessoas, sons suaves e outros pets vacinados", duration: "5 min/dia", tip: "Fase crítica até 16 semanas" },
+        { title: "🐕 Ensinar 'Senta'", steps: "Use petisco guiando o focinho para trás", duration: "3 min", tip: "Reforço positivo imediato" },
+        { title: "🦮 Andar na guia", steps: "Coleira leve, recompensar passos", duration: "5 min", tip: "Nunca puxar" },
+        { title: "🧩 Estímulo mental", steps: "Brinquedos interativos com petisco", duration: "10 min", tip: "Evita ansiedade" }
+      ],
+      healthTopics: [
+        { title: "💉 Calendário Vacinal Filhote", content: "V8/V10 aos 45 dias, reforço a cada 21 dias. Vermifugação quinzenal." },
+        { title: "🦷 Dentição e troca de dentes", content: "Ofereça mordedores próprios. Evite objetos duros." },
+        { title: "⚡ Cardioversão e energia", content: "Filhotes precisam de 18-22% de proteína. Evite sobrepeso." },
+        { title: "🐛 Protozoários comuns", content: "Giárdia é frequente; fezes mal cheirosas merecem atenção." }
+      ],
+      proTips: [
+        "💡 Crie uma rotina fixa de alimentação para evitar ansiedade.",
+        "🧸 Brinquedos de textura variada previnem comportamentos destrutivos.",
+        "🏠 Use tapetes higiênicos com feromônios para acelerar o aprendizado.",
+        "🎓 Nunca use castigo físico; filhotes associam medo."
+      ]
+    },
+    adulto: {
+      recipes: [
+        { name: "🔥 Bowl Alta Performance", ingredients: "Músculo bovino, quinoa, brócolis", prep: "Grelhar e misturar", qty: "22g/kg", tip: "Músculo para massa magra" },
+        { name: "🐔 Frango com Cúrcuma", ingredients: "Peito frango, arroz integral, açafrão", prep: "Cozer e adicionar azeite", qty: "20g/kg", tip: "Anti-inflamatório natural" },
+        { name: "🐟 Salmão e Abóbora", ingredients: "Salmão, abóbora cabotiá, linhaça", prep: "Assado e desfiado", qty: "25g/kg", tip: "Ômega 3 para pelagem" },
+        { name: "🥩 Mix de Vísceras", ingredients: "Moela, coração, cenoura", prep: "Cozer lentamente", qty: "18g/kg", tip: "Rico em taurina e vitaminas B" }
+      ],
+      trainings: [
+        { title: "🚶‍♂️ Passeio com Foco", steps: "Treinar olhar para o tutor ao passar por distrações", duration: "10 min", tip: "Use petiscos de alto valor" },
+        { title: "🏆 Obediência Avançada", steps: "Comandos: deita, rola, espera", duration: "8 min", tip: "Divida em pequenas sessões" },
+        { title: "🔄 Rotina de Agilidade", steps: "Pular obstáculos baixos, cones", duration: "12 min", tip: "Aumenta confiança" },
+        { title: "🔇 Controle de latidos", steps: "Recompensar silêncio, comando 'quieto'", duration: "5 min", tip: "Consistência diária" }
+      ],
+      healthTopics: [
+        { title: "🦷 Saúde periodontal", content: "70% dos cães adultos têm doença gengival. Escove 3x/semana." },
+        { title: "⚖️ Controle de peso", content: "Manter escore corporal 4-5/9. Exercícios diários obrigatórios." },
+        { title: "🧪 Check-up anual", content: "Hemograma, bioquímica e urinálise anuais para detecção precoce." }
+      ],
+      proTips: [
+        "🎯 Treine 10 min diários, cérebro cansa igual ao corpo.",
+        "🍖 Varie proteínas para evitar alergias alimentares.",
+        "💧 Ofereça água filtrada em múltiplos pontos.",
+        "🛏️ Crie um local de descanso exclusivo para redução de estresse."
+      ]
+    },
+    idoso: {
+      recipes: [
+        { name: "🦴 Suporte Articular", ingredients: "Frango, gelatina sem sabor, glucosamina", prep: "Cozer e adicionar gelatina", qty: "18g/kg", tip: "Colágeno tipo II" },
+        { name: "🥣 Sopa Renal Leve", ingredients: "Clara de ovo, abóbora, inhame", prep: "Cozer e amassar", qty: "15g/kg", tip: "Baixo fósforo" },
+        { name: "🐟 Ômega 3 Sênior", ingredients: "Sardinha, arroz, brócolis", prep: "Cozer e desfiar", qty: "20g/kg", tip: "Reduz inflamação crônica" },
+        { name: "🥑 Mix Antioxidante", ingredients: "Músculo, mirtilo, couve", prep: "Cozer levemente", qty: "18g/kg", tip: "Combate radicais livres" }
+      ],
+      trainings: [
+        { title: "🧠 Jogos de memória", steps: "Esconder petiscos em copos, estimular farejamento", duration: "5-8 min", tip: "Previne declínio cognitivo" },
+        { title: "🐾 Caminhada suave", steps: "Trajetos curtos com muitas pausas", duration: "10 min", tip: "Respeite o ritmo" },
+        { title: "🛋️ Massagem relaxante", steps: "Movimentos circulares nas articulações", duration: "5 min", tip: "Aumenta circulação" },
+        { title: "🎵 Música terapêutica", steps: "Colocar sons calmos e recompensar calma", duration: "5 min", tip: "Reduz ansiedade noturna" }
+      ],
+      healthTopics: [
+        { title: "🧑‍🦳 Artrite e mobilidade", content: "Suplemente com condroitina, evite escorregões." },
+        { title: "👀 Perda de visão/audição", content: "Ambientes previsíveis, não mover móveis com frequência." },
+        { title: "💊 Disfunção cognitiva", content: "Suplementos com MCT e antioxidantes ajudam na memória." },
+        { title: "❤️ Doenças cardíacas", content: "Check-up ecocardiográfico anual após os 8 anos." }
+      ],
+      proTips: [
+        "🛏️ Camas ortopédicas aliviam dores nas articulações.",
+        "🍲 Alimentação úmida ajuda hidratação e mastigação.",
+        "🔔 Use sinos ou guizos para localizar o tutor.",
+        "🌿 Fitoterápicos como cúrcuma e chá de camomila com supervisão."
+      ]
+    }
+  },
+  gato: {
+    filhote: {
+      recipes: [
+        { name: "🥛 Fórmula Láctea Felina", ingredients: "Leite específico, gema, taurina", prep: "Morno, mamadeira", qty: "20ml/kg", tip: "Essencial para 0-4 semanas" },
+        { name: "🐟 Patê de Salmão", ingredients: "Salmão cozido, cenoura, óleo de salmão", prep: "Amassar bem", qty: "25g/kg", tip: "Alto teor de DHA" },
+        { name: "🍗 Frango com Fígado", ingredients: "Frango, fígado, abóbora", prep: "Cozer e liquidificar", qty: "22g/kg", tip: "Rico em vitamina A" },
+        { name: "🥚 Papinha de Ovos", ingredients: "Ovo cozido, iogurte natural", prep: "Amassar", qty: "20g/kg", tip: "Proteína de alta digestibilidade" }
+      ],
+      trainings: [
+        { title: "📦 Uso da caixinha", steps: "Após refeições, colocar na caixa, recompensar", duration: "3 min", tip: "Areia fina sem perfumes" },
+        { title: "🐾 Arranhador vertical", steps: "Guiar as patas no arranhador, petisco", duration: "5 min", tip: "Evita móveis estragados" },
+        { title: "🤝 Socialização com humanos", steps: "Manuseio suave, carinho e recompensas", duration: "10 min", tip: "Período crítico até 9 semanas" }
+      ],
+      healthTopics: [
+        { title: "😷 Rinotraqueíte", content: "Vacina quádrupla (V4) a partir de 60 dias." },
+        { title: "🐛 Vermifugação mensal", content: "Larvas de Toxocara são comuns; ambiente limpo." },
+        { title: "👂 Otite e ácaros", content: "Limpeza auricular semanal com solução adequada." }
+      ],
+      proTips: [
+        "🎣 Varie os brinquedos: varinhas e bolinhas despertam instinto caçador.",
+        "🏠 Ofereça esconderijos seguros para que ele se sinta protegido.",
+        "🍽️ Alimente 4x ao dia em potes rasos para evitar aerofagia."
+      ]
+    },
+    adulto: {
+      recipes: [
+        { name: "🐟 Prevenção Urológica", ingredients: "Atum, abóbora, água filtrada", prep: "Cozer e servir com caldo", qty: "20g/kg", tip: "Aumenta ingestão hídrica" },
+        { name: "🍗 Frango com Ervas", ingredients: "Peito frango, salsa, cenoura", prep: "Cozer e desfiar", qty: "22g/kg", tip: "Antioxidantes naturais" },
+        { name: "🥫 Patê de Fígado", ingredients: "Fígado de frango, arroz, espinafre", prep: "Cozer e triturar", qty: "18g/kg", tip: "Vitaminas do complexo B" },
+        { name: "🦐 Camarão e Abobrinha", ingredients: "Camarão, abobrinha, óleo de coco", prep: "Refogar leve", qty: "20g/kg", tip: "Gourmet funcional" }
+      ],
+      trainings: [
+        { title: "🎯 Clicker para comandos", steps: "Associar click a petisco, ensinar 'senta'", duration: "5 min", tip: "Sessões curtas e frequentes" },
+        { title: "🚫 Evitar mesas", steps: "Usar superfície adesiva temporária e redirecionar", duration: "5 min", tip: "Nunca punir" },
+        { title: "🧩 Enriquecimento alimentar", steps: "Espalhar ração em comedouros lentos", duration: "10 min", tip: "Estimula caça" }
+      ],
+      healthTopics: [
+        { title: "💧 Doença do trato urinário inferior", content: "Alimentação úmida e fontes de água corrente reduzem risco." },
+        { title: "🦷 Gengivite felina", content: "Escovação 2x semana com pasta enzimática." },
+        { title: "⚖️ Obesidade", content: "Gatos castrados têm redução de 30% no metabolismo; controle rigoroso." }
+      ],
+      proTips: [
+        "🌿 Catnip pode ser usada para enriquecimento 2x/semana.",
+        "🪶 Invista em nichos verticais (prateleiras) para segurança.",
+        "🚰 Fonte de água corrente estimula consumo hídrico."
+      ]
+    },
+    idoso: {
+      recipes: [
+        { name: "🥣 Renal Support", ingredients: "Clara de ovo, batata-doce, óleo de salmão", prep: "Cozer e amassar", qty: "15g/kg", tip: "Proteína de alta qualidade baixo fósforo" },
+        { name: "🐟 Sardinha e Abóbora", ingredients: "Sardinha em água, abóbora cabotiá", prep: "Amassar", qty: "18g/kg", tip: "Ômega 3 e fibras" },
+        { name: "🥑 Patê Articular", ingredients: "Frango, gelatina, cúrcuma", prep: "Cozer e adicionar gelatina", qty: "15g/kg", tip: "Colágeno + curcumina" },
+        { name: "🍲 Sopa de Frango Fácil", ingredients: "Peito frango desfiado, caldo caseiro", prep: "Morno", qty: "20ml/kg", tip: "Hidratação extra" }
+      ],
+      trainings: [
+        { title: "🧩 Jogos de farejamento", steps: "Esconder petiscos em caixas de papelão", duration: "5 min", tip: "Manutenção cognitiva" },
+        { title: "🛌 Rotina de toque", steps: "Escovação suave + massagem nas costas", duration: "5 min", tip: "Fortalecimento vínculo" },
+        { title: "🌿 Estímulo com ervas", steps: "Oferecer catnip ou valeriana em brinquedos", duration: "3 min", tip: "Alivia estresse" }
+      ],
+      healthTopics: [
+        { title: "🩺 Hipertireoidismo", content: "Perda de peso com apetite voraz exige exame T4 total." },
+        { title: "🦴 Osteoartrite", content: "Rampas para acessar locais altos e camas aquecidas." },
+        { title: "💊 Insuficiência renal crônica", content: "Fosfato controlado, acesso fácil à água e vasilhas baixas." }
+      ],
+      proTips: [
+        "📏 Monitore ingestão hídrica diariamente com medidor.",
+        "🪞 Evite mudanças bruscas de ambiente; manten rotina.",
+        "🧴 Suplementos com glucosamina sob supervisão veterinária."
+      ]
+    }
+  }
+};
+
 let appState = {
-    pet: "cachorro",
-    idade: "adulto",
-    petName: "Meu Pet",
-    realAge: "",
-    petWeight: "",
-    checklist: [
-        { text: "Passeio diário (20min)", checked: false },
-        { text: "Escovação dental", checked: false }
-    ],
-    reminders: [],
-    vaccines: [],
-    gallery: [],
-    diaryEntries: [],
-    favoriteRecipes: []
+  pet: "cachorro",
+  idade: "adulto",
+  petName: "Meu Pet",
+  realAge: "",
+  petWeight: "",
+  checklist: [],
+  reminders: [],
+  vaccines: [],
+  gallery: [],
+  diaryEntries: []
 };
 
 function showToast(msg) {
-    let t = document.getElementById('toastMsg');
-    t.textContent = msg;
-    t.style.opacity = '1';
-    setTimeout(() => t.style.opacity = '0', 2500);
+  let t = document.getElementById('toastMsg');
+  t.textContent = msg;
+  t.style.opacity = '1';
+  setTimeout(() => t.style.opacity = '0', 2500);
 }
 
 function saveFullState() {
-    localStorage.setItem('petZenProState', JSON.stringify(appState));
+  localStorage.setItem('petZenProState', JSON.stringify(appState));
 }
 
 function loadState() {
-    let s = localStorage.getItem('petZenProState');
-    if (s) {
-        try {
-            let p = JSON.parse(s);
-            appState = { ...appState, ...p };
-            if (!appState.diaryEntries) appState.diaryEntries = [];
-            if (!appState.favoriteRecipes) appState.favoriteRecipes = [];
-        } catch (e) { }
-    }
+  let s = localStorage.getItem('petZenProState');
+  if (s) {
+    try {
+      let p = JSON.parse(s);
+      appState = { ...appState, ...p, diaryEntries: p.diaryEntries || [], checklist: p.checklist || [], reminders: p.reminders || [], vaccines: p.vaccines || [], gallery: p.gallery || [] };
+    } catch (e) { }
+  }
 }
 
-// ========== RECEITAS FUNCIONAIS (conteúdo premium) ==========
-const recipesData = {
-    filhote: [
-        { name: "Super Papinha Imunológica", ingredients: "Coração de frango, fígado, batata-doce, brócolis, óleo de coco", prep: "Cozer e triturar até pastoso", qty: "30-35g/kg", freq: "3-4x", tip: "Rico em ferro e zinco. Vitamina A para desenvolvimento ocular. Adicione probiótico 1x/dia.", why: "Coração fornece taurina (essencial), fígado = vitamina A natural, óleo de coco MCT para energia cerebral." },
-        { name: "Creme de Peixe com Abóbora", ingredients: "Pescada, abóbora, espinafre, gema cozida", prep: "Cozer, desfiar, amassar", qty: "28g/kg", freq: "3x", tip: "Ômega 3 para mielinização neural. Cálcio da gema. Ideal para raças grandes." },
-        { name: "Mix de Carne e Quinoa", ingredients: "Carne moída magra, quinoa real, cenoura, couve", prep: "Refogar sem óleo e cozinhar", qty: "30g/kg", freq: "3-4x", tip: "Quinoa = proteína completa + fibras prebióticas. Ajuda flora intestinal." }
-    ],
-    adulto: [
-        { name: "Proteína de Alto Valor Biológico", ingredients: "Peito de frango, brócolis, arroz integral, sardinha em lata (água)", prep: "Cozer tudo e desfiar", qty: "20-25g/kg", freq: "2x", tip: "Sardinha = ômega 3 anti-inflamatório. Brócolis = sulforafano antioxidante." },
-        { name: "Fórmula para Pelagem Premium", ingredients: "Salmão, batata-doce, espinafre, gengibre, azeite extra virgem", prep: "Assar ou cozinhar", qty: "22g/kg", freq: "2x", tip: "Ácidos graxos EPA/DHA + zinco natural. Gengibre reduz inflamação sistêmica." },
-        { name: "Recuperação Muscular", ingredients: "Coração de boi, inhame, abóbora, açafrão + pimenta preta", prep: "Cozer e triturar", qty: "20-25g/kg", freq: "2x", tip: "Coração rico em CoQ10, açafrão potencializado pela piperina. Para cães atletas." }
-    ],
-    idoso: [
-        { name: "Suporte Articular Avançado", ingredients: "Frango, mandioquinha, gelatina sem sabor, cúrcuma, colágeno hidrolisado", prep: "Cozer e adicionar gelatina", qty: "18g/kg", freq: "2x", tip: "Colágeno tipo II + glicosamina natural. Cúrcuma = anti-inflamatório potente." },
-        { name: "Patê Renal Suave", ingredients: "Clara de ovo, abóbora, arroz cateto, azeite", prep: "Cozer e amassar", qty: "15-18g/kg", freq: "2x", tip: "Baixo fósforo, proteína de alta digestibilidade. Ideal para início de doença renal." },
-        { name: "Energia Cognitiva", ingredients: "Miúdos de frango, beterraba, óleo de coco, brócolis", prep: "Cozer", qty: "18g/kg", freq: "2x", tip: "Betacianina antioxidante cerebral, MCT melhora função cognitiva." }
-    ]
-};
-
-function renderAllRecipes() {
-    let container = document.getElementById('recipesFullContainer');
-    let html = '';
-    const stages = ['filhote', 'adulto', 'idoso'];
-    const stageNames = { filhote: '🐣 FILHOTES - Desenvolvimento Máximo', adulto: '⚡ ADULTOS - Performance e Manutenção', idoso: '👑 IDOSOS - Longevidade Ativa' };
-    stages.forEach(stage => {
-        html += `<div><h3>${stageNames[stage]}</h3><div class="grid-2col">` + recipesData[stage].map(r => `<div class="recipe-card"><h4>🍲 ${r.name}</h4><p><strong>Ingredientes:</strong> ${r.ingredients}<br><strong>Preparo:</strong> ${r.prep}<br><strong>Porção:</strong> ${r.qty}<br><strong>Frequência:</strong> ${r.freq}<br><strong>🧠 Por que funciona:</strong> ${r.why || r.tip}<br><i class="fas fa-star-of-life"></i> Dica Pro: ${r.tip}</p><button class="favSingleRecipe btn-icon" data-recipe="${r.name}">⭐ Salvar favorita</button></div>`).join('') + `</div></div>`;
-    });
-    container.innerHTML = html;
-    document.querySelectorAll('.favSingleRecipe').forEach(btn => btn.addEventListener('click', (e) => {
-        let rec = btn.dataset.recipe;
-        if (!appState.favoriteRecipes.includes(rec)) appState.favoriteRecipes.push(rec);
-        saveFullState();
-        showToast(`Receita "${rec}" salva nos favoritos!`);
-    }));
+function getCurrentContent() {
+  return CONTENT_DB[appState.pet]?.[appState.idade] || CONTENT_DB.cachorro.adulto;
 }
 
-// TREINAMENTO PREMIUM
-const trainingLibrary = [
-    { title: "🎯 Condicionamento Operante Avançado", steps: "Use clicker para marcar comportamentos exatos. Reforce em janela de 0,5 seg. Atraso reduz aprendizado em 40%.", duration: "5-10 min/dia", tip: "Mantenha sessões curtas, encerre sempre com sucesso." },
-    { title: "🧠 Neurociência do Sentar", steps: "Posicione petisco acima da cabeça, espere o movimento natural. Nunca pressione a garupa. Associe comando após 3 repetições.", duration: "3 min", tip: "Estímulo visual precede o verbal: primeiramente só gesto." },
-    { title: "🐕‍🦺 Controle de Impulsos: 'Espera' Profundo", steps: "Peça sentar, coloque petisco no chão, cubra com a mão. Libere com 'ok'. Aumente distância e tempo gradual.", duration: "8 min", tip: "Use porta de casa para treinar paciência antes de sair." },
-    { title: "🚶 Caminhada em 'Posição de Ouro'", steps: "Ensine o pet a andar rente à perna esquerda sem puxar. Use vara de treino ou petisco fixo na cintura. Reforce a cada 3 passos corretos.", duration: "10 min passeio", tip: "Peitoral com presilha frontal reduz força." },
-    { title: "🔄 Rolar com Liberdade", steps: "A partir do deitado, guie o petisco em arco atrás da cabeça. Se ele resistir, pare e recompense a tentativa. Respeite a anatomia.", duration: "5 min", tip: "Nunca force a rolagem; alguns cães tem limitação." },
-    { title: "🔇 Silêncio Premiado", steps: "Quando latir, apresente petisco silenciosamente e espere 2 seg de silêncio. Aumente gradativamente.", duration: "8 min", tip: "Não use 'não' aos gritos – o cão associa o grito ao momento de latir." },
-    { title: "🚫 'Deixa' em Situações de Risco", steps: "Treine com objetos de baixo valor, depois aumente dificuldade (comida no chão). Recompense com algo de valor superior.", duration: "10 min", tip: "Use frango desfiado como recompensa principal." },
-    { title: "🚪 Porta com Autocontrole", steps: "Treine sentar antes de abrir a porta. Se levantar, feche. Só libera quando mantiver sentado.", duration: "12 min", tip: "Use coleira de treino para segurança." },
-    { title: "🐾 Socialização Estratégica", steps: "Exponha a ambientes controlados com reforço positivo. Evite encontros forçados. Leia linguagem corporal (orelhas, cauda).", duration: "15 min", tip: "Cães tensos mostram 'olho de baleia'. Respeite." },
-    { title: "🧩 Enriquecimento Cognitivo", steps: "Crie desafios: garrafas pet com furos, tapetes farejadores, caixas de papelão com petiscos. Mude 2x semana.", duration: "diário", tip: "Estimula neurônios-espelho e reduz ansiedade." }
-];
-
-function renderFullTraining() {
-    document.getElementById('trainingGridFull').innerHTML = trainingLibrary.map(t => `<div class="training-card"><h4>${t.title}</h4><p>${t.steps}</p><small>⏱️ ${t.duration}</small><br><i class="fas fa-gem"></i> ${t.tip}</div>`).join('');
+function renderAllPersonalized() {
+  const content = getCurrentContent();
+  // Nutrição
+  document.getElementById('recipesFullContainer').innerHTML = `<div class="grid-2col">` + content.recipes.map(r => `<div class="recipe-card"><h4>🍽️ ${r.name}</h4><p><strong>Ingredientes:</strong> ${r.ingredients}<br><strong>Preparo:</strong> ${r.prep}<br><strong>Porção:</strong> ${r.qty}<br><i class="fas fa-star-of-life"></i> ${r.tip}</p></div>`).join('') + `</div>`;
+  document.getElementById('nutritionSubtitle').innerHTML = `📌 Cardápio exclusivo para ${appState.pet === 'cachorro' ? '🐶 Cachorro' : '🐱 Gato'} ${appState.idade === 'filhote' ? 'Filhote' : appState.idade === 'adulto' ? 'Adulto' : 'Idoso'}`;
+  // Treinos
+  document.getElementById('trainingGridFull').innerHTML = content.trainings.map(t => `<div class="training-card"><h4>${t.title}</h4><p>${t.steps}</p><small>⏱️ ${t.duration}</small><br><i class="fas fa-gem"></i> ${t.tip}</div>`).join('');
+  // Saúde
+  document.getElementById('healthGrid').innerHTML = content.healthTopics.map(h => `<div class="card-premium"><h3><i class="fas fa-thermometer-half"></i> ${h.title}</h3><p>${h.content}</p></div>`).join('');
+  // Dicas PRO
+  document.getElementById('proTipsGridFull').innerHTML = content.proTips.map(tip => `<div class="card-premium golden-card"><i class="fas fa-crown"></i> ${tip}</div>`).join('');
+  // Dashboard dinâmico
+  updateDashboardPersonalized();
+  updateClientAreaDisplay();
 }
 
-// NUTRIÇÃO AVANÇADA
-const nutritionArticles = [
-    { title: "Cálculo Calórico Personalizado", content: "NER = 70 * (peso kg)^0,75. Para cães castrados multiplique por 1,6, ativos por 2,0. Gatos castrados 1,2. Ajuste semanal." },
-    { title: "Análise de Rótulo: % de Proteína na Matéria Seca", content: "(proteína % / (100 - umidade %)) * 100. Mínimo 30% para cães, 40% para gatos. Evite subprodutos e corantes." },
-    { title: "Suplementação Funcional", content: "Ômega-3 (EPA/DHA): 40mg/kg/dia para efeito anti-inflamatório. Glucosamina: 15mg/kg para idosos. Probióticos: cepas Enterococcus faecium." },
-    { title: "Dieta Mista: Ração + Natural", content: "Nunca misture no mesmo horário (diferença de digestão). Forneça natural em refeição separada. Mantenha proporção 70/30." },
-    { title: "Alimentos Proibidos com Justificativa", content: "Uva e uva passa: nefrotoxicidade. Chocolate: teobromina causa arritmia. Xilitol: hipoglicemia fulminante. Alho em excesso: anemia oxidativa." }
-];
-
-function renderNutrition() {
-    document.getElementById('nutritionGrid').innerHTML = nutritionArticles.map(a => `<div class="card-premium"><h3><i class="fas fa-leaf"></i> ${a.title}</h3><p>${a.content}</p></div>`).join('');
-}
-
-// SAÚDE PREVENTIVA AVANÇADA
-const healthTopics = [
-    { title: "Sinais Precoces de Doença Renal", content: "Polidipsia (>100ml/kg/dia), halitose amoniacal, perda de peso. Exame: creatinina, SDMA, urinálise. Intervenção nutricional precoce prolonga sobrevida em 2 anos." },
-    { title: "Displasia Coxofemoral: Prevenção", content: "Evite sobrepeso nos primeiros 12 meses. Suplemente com colágeno e ômega-3. Radiografia aos 2 anos para rastreio." },
-    { title: "Doença Periodontal Silenciosa", content: "70% dos cães acima de 3 anos têm periodontite. Escovação diária + enzimas (polipeptídeos). Sem tratamento, bactérias atingem coração e rins." },
-    { title: "Vacinação de Alto Risco", content: "Além da V10, considere vacina contra leptospirose (sorvariedades) para cães com acesso a área urbana. Revacinação por título de anticorpos." }
-];
-
-function renderHealth() {
-    document.getElementById('healthGrid').innerHTML = healthTopics.map(h => `<div class="card-premium"><h3><i class="fas fa-thermometer-half"></i> ${h.title}</h3><p>${h.content}</p></div>`).join('');
-}
-
-// DICAS PRO
-const proTipsList = [
-    "💎 Use tapete de farejamento para reduzir ansiedade em 40% em apenas 15 minutos/dia.",
-    "💰 Economize: compre suplementos em pó (glucosamina) ao invés de mastigáveis – custo 60% menor.",
-    "🧊 Congele caldo de ossos em forminhas de gelo para hidratação e enriquecimento no verão.",
-    "📈 Treine micro-comportamentos: 3 minutos antes das refeições aumentam foco e obediência.",
-    "🌿 Fitoterapia funcional: camomila para ansiedade, alecrim para repelir pulgas (uso externo).",
-    "📊 Use planilha de indicadores: apetite, fezes (escala de Bristol), consumo de água – detecta problemas 3 dias antes.",
-    "🦷 Escovação com pasta enzimática + escova de dedo reduz tártaro 80% em 6 meses.",
-    "🎒 Cães de trabalho (pastoreio, farejadores) precisam de 2h de estímulo cognitivo diário para evitar estereotipias."
-];
-
-function renderProTips() {
-    document.getElementById('proTipsGridFull').innerHTML = proTipsList.map(tip => `<div class="card-premium golden-card"><i class="fas fa-crown"></i> ${tip}</div>`).join('');
-}
-
-// DIÁRIO INTELIGENTE
-function analyzeDiaryPatterns() {
-    let entries = appState.diaryEntries;
-    if (entries.length === 0) {
-        document.getElementById('diaryInsights').innerHTML = '<i class="fas fa-chart-line"></i> Após 3 registros, insights automáticos aparecerão aqui.';
-        return;
-    }
-    let lowMoodCount = entries.filter(e => e.mood && (e.mood.includes('Triste') || e.mood.includes('Letargia'))).length;
-    let weightFluctuations = entries.some(e => e.weight && appState.petWeight && Math.abs(parseFloat(e.weight) - parseFloat(appState.petWeight)) > 0.5);
-    let repeatedFood = entries.slice(0, 5).map(e => e.food).filter((v, i, a) => a.indexOf(v) === i).length < 3;
-    let insights = [];
-    if (lowMoodCount >= 2) insights.push("⚠️ Padrão de baixa disposição detectado. Avalie dor oculta (articulações/dentes) ou enriquecimento ambiental.");
-    if (weightFluctuations) insights.push("📉 Variação de peso significativa. Recalcule porção alimentar e considere check-up metabólico.");
-    if (repeatedFood && entries.length > 4) insights.push("🥩 Rotatividade alimentar baixa. Varie fontes proteicas para evitar intolerâncias silenciosas.");
-    if (insights.length === 0) insights.push("✅ Sem alertas críticos. Continue o monitoramento diário.");
-    document.getElementById('diaryInsights').innerHTML = `<i class="fas fa-brain"></i> <strong>Análise inteligente:</strong> ${insights.join(' ')}`;
-}
-
-function renderDiary() {
-    let listDiv = document.getElementById('diaryHistoryList');
-    if (!appState.diaryEntries.length) {
-        listDiv.innerHTML = '<p>Nenhum registro ainda. Crie o diário do seu pet!</p>';
-        analyzeDiaryPatterns();
-        return;
-    }
-    listDiv.innerHTML = appState.diaryEntries.slice().reverse().slice(0, 15).map(e => `<div class="diary-entry"><strong>${e.date}</strong> | 🐕 ${e.petNameEntry || "Sem nome"} | Peso: ${e.weight}kg | Alimentação: ${e.food} | Humor: ${e.mood}<br>📝 ${e.notes}</div>`).join('');
-    analyzeDiaryPatterns();
-}
-
-function addDiaryEntry() {
-    let name = document.getElementById('diaryPetName').value.trim() || appState.petName;
-    let weight = document.getElementById('diaryWeight').value;
-    let food = document.getElementById('diaryFood').value;
-    let mood = document.getElementById('diaryMood').value;
-    let notes = document.getElementById('diaryNotes').value;
-    if (!food && !weight && !notes) {
-        showToast("Preencha ao menos um campo");
-        return;
-    }
-    let newEntry = { date: new Date().toLocaleString(), petNameEntry: name, weight, food, mood, notes };
-    appState.diaryEntries.unshift(newEntry);
-    saveFullState();
-    renderDiary();
-    document.getElementById('diaryWeight').value = '';
-    document.getElementById('diaryFood').value = '';
-    document.getElementById('diaryNotes').value = '';
-    document.getElementById('diaryPetName').value = '';
-    showToast("Registro salvo! Insights atualizados.");
-}
-
-// SOLUÇÕES: DIAGNÓSTICO COMPORTAMENTAL
-const solutionsDB = {
-    cachorro_filhote: { titulo: "Filhote: Janela de Socialização", conteudo: ["Período crítico até 16 semanas. Exponha a 100+ estímulos (superfícies, sons, pessoas) de forma positiva. Use contracondicionamento para medos. Erro comum: proteger demais gera insegurança."] },
-    cachorro_adulto: { titulo: "Adulto: Ansiedade por Separação", conteudo: ["Treine ausências graduais (1min, 5min, 20min). Ofereça Kong congelado. Nunca faça despedidas emocionadas. Estudos mostram que 70% reduzem sintomas em 3 semanas."] },
-    cachorro_idoso: { titulo: "Idoso: Disfunção Cognitiva", conteudo: ["Sinais: desorientação, alteração ciclo sono. Suplemente com MCT, fosfatidilserina. Enriquecimento olfativo reduz progressão em 30%."] },
-    gato_filhote: { titulo: "Gato Filhote: Arranhadura", conteudo: ["Use arranhadores verticais e horizontais, posicione perto de áreas de descanso. Feliway ajuda. Nunca corte as unhas com guilhotina – use cortador específico."] },
-    gato_adulto: { titulo: "Gato Adulto: Estresse e Cistite", conteudo: ["Estresse é principal gatilho para cistite idiopática. Caixas de areia: nº de gatos +1, limpeza diária. Ofereça esconderijos elevados."] },
-    gato_idoso: { titulo: "Gato Idoso: Dores Articulares", conteudo: ["Aumente acessibilidade com rampas, aqueça camas. Suplementação com ácidos graxos. Dores crônicas causam agressividade."] }
-};
-
-function getCurrentKey() {
-    return appState.pet && appState.idade ? `${appState.pet}_${appState.idade}` : null;
-}
-
-function renderSolucoes() {
-    let key = getCurrentKey(),
-        container = document.getElementById('solucoesGrid');
-    if (!key || !solutionsDB[key]) {
-        container.innerHTML = '<div class="card-premium">Selecione o perfil do pet para ver diagnóstico comportamental personalizado.</div>';
-        return;
-    }
-    let data = solutionsDB[key];
-    container.innerHTML = `<div class="card-premium golden-card"><h3><i class="fas fa-diagnoses"></i> ${data.titulo}</h3><p>${data.conteudo[0]}</p><hr><p><strong>Protocolo premium:</strong> ${data.conteudo[0]}</p></div>`;
+function updateDashboardPersonalized() {
+  const content = getCurrentContent();
+  const planoLabel = `✨ Plano ideal para ${appState.pet === 'cachorro' ? '🐕 Cachorro' : '🐈 Gato'} ${appState.idade === 'filhote' ? 'Filhote' : appState.idade === 'adulto' ? 'Adulto' : 'Idoso'}`;
+  const recRecipe = content.recipes[0]?.name || "Receita especial";
+  const recTraining = content.trainings[0]?.title || "Treino personalizado";
+  const healthAdvice = content.healthTopics[0]?.title || "Check-up preventivo";
+  document.getElementById('dashboardCards').innerHTML = `
+        <div class="dashboard-card"><h3><i class="fas fa-star-of-life"></i> ${planoLabel}</h3><p>🍲 Alimentação: ${recRecipe}<br>🎓 Treino: ${recTraining}<br>🩺 Foco: ${healthAdvice}</p></div>
+        <div class="dashboard-card"><h3><i class="fas fa-utensils"></i> Nutrição do dia</h3><p>${recRecipe}: seguindo orientações exclusivas para ${appState.petName}.</p><button class="btn-icon" onclick="document.querySelector('[data-tab=\\\"alimentacao\\\"]').click()">Ver receitas</button></div>
+        <div class="dashboard-card"><h3><i class="fas fa-dumbbell"></i> Treino principal</h3><p>${recTraining}</p><button class="btn-icon" onclick="document.querySelector('[data-tab=\\\"treinamento\\\"]').click()">Ver todos</button></div>
+        <div class="dashboard-card"><h3><i class="fas fa-heartbeat"></i> Cuidado em destaque</h3><p>${healthAdvice}</p></div>`;
+  document.getElementById('petSummaryArea').innerHTML = `<div><i class="fas fa-paw"></i> <strong>${appState.petName}</strong> • ${appState.pet === 'cachorro' ? '🐶' : '🐱'} • ${appState.idade === 'filhote' ? 'Filhote' : appState.idade === 'adulto' ? 'Adulto' : 'Idoso'} • ${appState.petWeight ? appState.petWeight + 'kg' : 'Peso'}</div><div><button id="quickEditProfile" class="btn-outline" style="padding:0.3rem 1rem;"><i class="fas fa-edit"></i> Editar</button></div>`;
+  document.getElementById('quickEditProfile')?.addEventListener('click', () => openProfileModal());
 }
 
 function updateClientAreaDisplay() {
-    document.getElementById('clientPetNameDisplay').innerText = appState.petName;
-    document.getElementById('clientAgeDisplay').innerText = appState.realAge || "Não informado";
-    document.getElementById('clientWeightDisplay').innerText = appState.petWeight || "?";
-    document.getElementById('petNameSummary').innerText = appState.petName;
+  document.getElementById('clientPetNameDisplay').innerText = appState.petName;
+  document.getElementById('clientStageDisplay').innerText = `${appState.pet === 'cachorro' ? 'Cachorro' : 'Gato'} - ${appState.idade === 'filhote' ? 'Filhote' : appState.idade === 'adulto' ? 'Adulto' : 'Idoso'}`;
+  document.getElementById('clientWeightDisplay').innerText = appState.petWeight || "?";
+  document.getElementById('petNameSummary').innerText = appState.petName;
 }
 
-function openProfileModal() {
-    document.getElementById('profilePetName').value = appState.petName;
-    document.getElementById('profileType').value = appState.pet;
-    document.getElementById('profileAgeStage').value = appState.idade;
-    document.getElementById('profileRealAge').value = appState.realAge || '';
-    document.getElementById('profileWeight').value = appState.petWeight || '';
-    document.getElementById('profileModal').classList.add('active');
+function renderDiary() {
+  let listDiv = document.getElementById('diaryHistoryList');
+  if (!appState.diaryEntries.length) {
+    listDiv.innerHTML = '<p>Sem registros.</p>';
+    document.getElementById('diaryInsights').innerHTML = '<i class="fas fa-chart-line"></i> Registre 3 dias para análise preditiva.';
+    return;
+  }
+  listDiv.innerHTML = appState.diaryEntries.slice().reverse().slice(0, 12).map(e => `<div class="diary-entry"><strong>${e.date}</strong> | ${e.petNameEntry || appState.petName} | Peso: ${e.weight}kg | Humor: ${e.mood}<br>📝 ${e.notes}</div>`).join('');
+  let lowMood = appState.diaryEntries.filter(e => e.mood && (e.mood.includes('Triste') || e.mood.includes('Letargia'))).length;
+  let insights = lowMood > 1 ? "⚠️ Baixa disposição recorrente, avalie dor ou estresse." : "✅ Sem alertas críticos no histórico recente.";
+  document.getElementById('diaryInsights').innerHTML = `<i class="fas fa-brain"></i> <strong>Análise preditiva:</strong> ${insights}`;
 }
 
-// Funções de gestão
+function addDiaryEntry() {
+  let name = document.getElementById('diaryPetName').value.trim() || appState.petName;
+  let weight = document.getElementById('diaryWeight').value;
+  let food = document.getElementById('diaryFood').value;
+  let mood = document.getElementById('diaryMood').value;
+  let notes = document.getElementById('diaryNotes').value;
+  if (!food && !weight && !notes) {
+    showToast("Preencha ao menos um campo");
+    return;
+  }
+  let newEntry = { date: new Date().toLocaleString(), petNameEntry: name, weight, food, mood, notes };
+  appState.diaryEntries.unshift(newEntry);
+  saveFullState();
+  renderDiary();
+  document.getElementById('diaryWeight').value = '';
+  document.getElementById('diaryFood').value = '';
+  document.getElementById('diaryNotes').value = '';
+  showToast("Registro salvo!");
+}
+
 function renderChecklist() {
-    let container = document.getElementById('advancedChecklist');
-    let html = '';
-    appState.checklist.forEach((item, idx) => {
-        html += `<div style="display:flex; gap:8px; align-items:center; margin:8px 0;"><input type="checkbox" ${item.checked ? 'checked' : ''} data-idx="${idx}" class="checkItem"> <span style="flex:1">${item.text}</span><button class="delCheck" data-idx="${idx}">🗑️</button></div>`;
-    });
-    container.innerHTML = html;
-    attachCheckEvents();
+  let container = document.getElementById('advancedChecklist');
+  let html = '';
+  (appState.checklist || []).forEach((item, idx) => {
+    html += `<div style="display:flex; gap:8px; margin:8px 0;"><input type="checkbox" ${item.checked ? 'checked' : ''} data-idx="${idx}" class="checkItem"> <span style="flex:1">${item.text}</span><button class="delCheck" data-idx="${idx}">🗑️</button></div>`;
+  });
+  container.innerHTML = html;
+  attachCheckEvents();
 }
 
 function attachCheckEvents() {
-    document.querySelectorAll('.checkItem').forEach(cb => cb.addEventListener('change', function () {
-        let idx = this.dataset.idx;
-        appState.checklist[idx].checked = this.checked;
-        saveFullState();
-    }));
-    document.querySelectorAll('.delCheck').forEach(btn => btn.addEventListener('click', function () {
-        let idx = this.dataset.idx;
-        appState.checklist.splice(idx, 1);
-        saveFullState();
-        renderChecklist();
-    }));
+  document.querySelectorAll('.checkItem').forEach(cb => cb.addEventListener('change', function () {
+    let idx = this.dataset.idx;
+    appState.checklist[idx].checked = this.checked;
+    saveFullState();
+  }));
+  document.querySelectorAll('.delCheck').forEach(btn => btn.addEventListener('click', function () {
+    let idx = this.dataset.idx;
+    appState.checklist.splice(idx, 1);
+    saveFullState();
+    renderChecklist();
+  }));
 }
 
 function renderReminders() {
-    let container = document.getElementById('remindersList');
-    if (!appState.reminders.length) {
-        container.innerHTML = '<p>Sem lembretes</p>';
-        return;
-    }
-    let html = '';
-    appState.reminders.forEach((r, i) => {
-        html += `<div>📌 ${r.text} - ${r.date || 'sem data'} <button class="delRem" data-idx="${i}">❌</button></div>`;
-    });
-    container.innerHTML = html;
-    document.querySelectorAll('.delRem').forEach(btn => btn.addEventListener('click', function () {
-        let idx = this.dataset.idx;
-        appState.reminders.splice(idx, 1);
-        saveFullState();
-        renderReminders();
-    }));
+  let container = document.getElementById('remindersList');
+  if (!appState.reminders.length) {
+    container.innerHTML = '<p>Sem lembretes</p>';
+    return;
+  }
+  let html = '';
+  appState.reminders.forEach((r, i) => {
+    html += `<div>📌 ${r.text} - ${r.date || ''} <button class="delRem" data-idx="${i}">❌</button></div>`;
+  });
+  container.innerHTML = html;
+  document.querySelectorAll('.delRem').forEach(btn => btn.addEventListener('click', function () {
+    let idx = this.dataset.idx;
+    appState.reminders.splice(idx, 1);
+    saveFullState();
+    renderReminders();
+  }));
 }
 
 function renderVaccines() {
-    let container = document.getElementById('vaccinesList');
-    if (!appState.vaccines.length) {
-        container.innerHTML = '<p>Adicione vacinas</p>';
-        return;
-    }
-    let html = '';
-    appState.vaccines.forEach((v, i) => {
-        html += `<div>💉 ${v.name} - ${v.date} <button class="delVac" data-idx="${i}">🗑️</button></div>`;
-    });
-    container.innerHTML = html;
-    document.querySelectorAll('.delVac').forEach(btn => btn.addEventListener('click', function () {
-        let idx = this.dataset.idx;
-        appState.vaccines.splice(idx, 1);
-        saveFullState();
-        renderVaccines();
-    }));
+  let container = document.getElementById('vaccinesList');
+  if (!appState.vaccines.length) {
+    container.innerHTML = '<p>Adicione vacinas</p>';
+    return;
+  }
+  let html = '';
+  appState.vaccines.forEach((v, i) => {
+    html += `<div>💉 ${v.name} - ${v.date} <button class="delVac" data-idx="${i}">🗑️</button></div>`;
+  });
+  container.innerHTML = html;
+  document.querySelectorAll('.delVac').forEach(btn => btn.addEventListener('click', function () {
+    let idx = this.dataset.idx;
+    appState.vaccines.splice(idx, 1);
+    saveFullState();
+    renderVaccines();
+  }));
 }
 
 function renderGallery() {
-    let container = document.getElementById('galleryGrid');
-    if (!appState.gallery.length) {
-        container.innerHTML = '<p>Adicione fotos</p>';
-        return;
-    }
-    let html = '';
-    appState.gallery.forEach((url, i) => {
-        html += `<div><img src="${url}" style="width:80px;height:80px;object-fit:cover;border-radius:16px;" onerror="this.src='https://placehold.co/80x80?text=Erro'"><br><button class="delGal" data-idx="${i}">Remover</button></div>`;
-    });
-    container.innerHTML = html;
-    document.querySelectorAll('.delGal').forEach(btn => btn.addEventListener('click', function () {
-        let idx = this.dataset.idx;
-        appState.gallery.splice(idx, 1);
-        saveFullState();
-        renderGallery();
-    }));
+  let container = document.getElementById('galleryGrid');
+  if (!appState.gallery.length) {
+    container.innerHTML = '<p>Adicione fotos</p>';
+    return;
+  }
+  let html = '';
+  appState.gallery.forEach((url, i) => {
+    html += `<div><img src="${url}" style="width:80px;height:80px;object-fit:cover;border-radius:16px;" onerror="this.src='https://placehold.co/80x80?text=Erro'"><br><button class="delGal" data-idx="${i}">Remover</button></div>`;
+  });
+  container.innerHTML = html;
+  document.querySelectorAll('.delGal').forEach(btn => btn.addEventListener('click', function () {
+    let idx = this.dataset.idx;
+    appState.gallery.splice(idx, 1);
+    saveFullState();
+    renderGallery();
+  }));
+}
+
+function openProfileModal() {
+  document.getElementById('profilePetName').value = appState.petName;
+  document.getElementById('profileType').value = appState.pet;
+  document.getElementById('profileAgeStage').value = appState.idade;
+  document.getElementById('profileRealAge').value = appState.realAge || '';
+  document.getElementById('profileWeight').value = appState.petWeight || '';
+  document.getElementById('profileModal').classList.add('active');
+}
+
+function resetAndOnboarding() {
+  localStorage.removeItem('petZenProState');
+  window.location.reload();
 }
 
 function initTabs() {
-    const btns = document.querySelectorAll('.tab-btn');
-    const panes = document.querySelectorAll('.tab-pane');
-    btns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            let tabId = btn.dataset.tab;
-            btns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            panes.forEach(p => p.classList.remove('active-pane'));
-            document.getElementById(`${tabId}Pane`).classList.add('active-pane');
-        });
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      let tabId = btn.dataset.tab;
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active-pane'));
+      document.getElementById(`${tabId}Pane`).classList.add('active-pane');
     });
+  });
 }
 
-// Event listeners após carregar o DOM
-document.addEventListener('DOMContentLoaded', () => {
-    loadState();
-    if (!appState.pet) appState.pet = "cachorro";
-    if (!appState.idade) appState.idade = "adulto";
-    if (!appState.petName) appState.petName = "Meu Pet";
+function loadFullApp() {
+  renderAllPersonalized();
+  renderDiary();
+  renderChecklist();
+  renderReminders();
+  renderVaccines();
+  renderGallery();
+  initTabs();
+  document.getElementById('editPetProfileBtn')?.addEventListener('click', openProfileModal);
+  document.getElementById('editProfileFromClient')?.addEventListener('click', openProfileModal);
+  document.getElementById('profileSummaryBtn')?.addEventListener('click', openProfileModal);
+  document.getElementById('changeProfileBtn')?.addEventListener('click', resetAndOnboarding);
+  document.getElementById('saveProfileBtn')?.addEventListener('click', () => {
+    appState.petName = document.getElementById('profilePetName').value;
+    appState.pet = document.getElementById('profileType').value;
+    appState.idade = document.getElementById('profileAgeStage').value;
+    appState.realAge = document.getElementById('profileRealAge').value;
+    appState.petWeight = document.getElementById('profileWeight').value;
     saveFullState();
-
-    updateClientAreaDisplay();
-    renderSolucoes();
-    renderAllRecipes();
-    renderFullTraining();
-    renderNutrition();
-    renderHealth();
-    renderProTips();
+    renderAllPersonalized();
     renderDiary();
-    renderChecklist();
-    renderReminders();
-    renderVaccines();
-    renderGallery();
-    initTabs();
+    document.getElementById('profileModal').classList.remove('active');
+    showToast("Perfil atualizado! Conteúdo 100% personalizado.");
+  });
+  document.getElementById('addCheckItemBtn')?.addEventListener('click', () => {
+    let val = document.getElementById('newCheckItem').value.trim();
+    if (val) {
+      if (!appState.checklist) appState.checklist = [];
+      appState.checklist.push({ text: val, checked: false });
+      saveFullState();
+      renderChecklist();
+      document.getElementById('newCheckItem').value = '';
+    }
+  });
+  document.getElementById('addReminderBtn')?.addEventListener('click', () => {
+    let txt = document.getElementById('reminderText').value;
+    let date = document.getElementById('reminderDate').value;
+    if (txt) {
+      if (!appState.reminders) appState.reminders = [];
+      appState.reminders.push({ text: txt, date });
+      saveFullState();
+      renderReminders();
+      document.getElementById('reminderText').value = '';
+      document.getElementById('reminderDate').value = '';
+    }
+  });
+  document.getElementById('addVaccineBtn')?.addEventListener('click', () => {
+    let name = document.getElementById('vacName').value;
+    let date = document.getElementById('vacDate').value;
+    if (name) {
+      if (!appState.vaccines) appState.vaccines = [];
+      appState.vaccines.push({ name, date });
+      saveFullState();
+      renderVaccines();
+      document.getElementById('vacName').value = '';
+      document.getElementById('vacDate').value = '';
+    }
+  });
+  document.getElementById('addImageBtn')?.addEventListener('click', () => {
+    let url = document.getElementById('imgUrl').value.trim();
+    if (url) {
+      if (!appState.gallery) appState.gallery = [];
+      appState.gallery.push(url);
+      saveFullState();
+      renderGallery();
+      document.getElementById('imgUrl').value = '';
+    }
+  });
+  document.getElementById('saveDiaryBtn')?.addEventListener('click', addDiaryEntry);
+  document.getElementById('installAppBigBtn')?.addEventListener('click', () => {
+    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: 3 pontos → 'Adicionar à tela inicial'.";
+    document.getElementById('installInstructions').innerHTML = msg;
+    document.getElementById('installModal').classList.add('active');
+  });
+  document.getElementById('closeModalBtn')?.addEventListener('click', () => document.getElementById('installModal').classList.remove('active'));
+}
 
-    // Eventos de modais
-    document.getElementById('saveProfileBtn')?.addEventListener('click', () => {
-        appState.petName = document.getElementById('profilePetName').value;
-        appState.pet = document.getElementById('profileType').value;
-        appState.idade = document.getElementById('profileAgeStage').value;
-        appState.realAge = document.getElementById('profileRealAge').value;
-        appState.petWeight = document.getElementById('profileWeight').value;
-        saveFullState();
-        updateClientAreaDisplay();
-        renderSolucoes();
-        document.getElementById('profileModal').classList.remove('active');
-        showToast("Perfil salvo! Conteúdo personalizado.");
+document.addEventListener('DOMContentLoaded', () => {
+  loadState();
+  const hasProfile = appState.petName && appState.pet && appState.idade && appState.petWeight;
+  if (!hasProfile || appState.petName === "Meu Pet" && !appState.petWeight) {
+    document.getElementById('onboardingScreen').style.display = 'flex';
+    document.getElementById('mainApp').style.display = 'none';
+  } else {
+    document.getElementById('onboardingScreen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    loadFullApp();
+  }
+  let selectedPet = "cachorro", selectedAge = "adulto";
+  document.querySelectorAll('.pet-option').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.pet-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedPet = el.dataset.pet;
     });
-    document.getElementById('editPetProfileBtn')?.addEventListener('click', openProfileModal);
-    document.getElementById('editProfileFromClient')?.addEventListener('click', openProfileModal);
-    document.getElementById('profileSummaryBtn')?.addEventListener('click', openProfileModal);
-    document.getElementById('addCheckItemBtn')?.addEventListener('click', () => {
-        let val = document.getElementById('newCheckItem').value.trim();
-        if (val) {
-            appState.checklist.push({ text: val, checked: false });
-            saveFullState();
-            renderChecklist();
-            document.getElementById('newCheckItem').value = '';
-        }
+  });
+  document.querySelectorAll('.age-option').forEach(el => {
+    el.addEventListener('click', () => {
+      document.querySelectorAll('.age-option').forEach(o => o.classList.remove('selected'));
+      el.classList.add('selected');
+      selectedAge = el.dataset.age;
     });
-    document.getElementById('addReminderBtn')?.addEventListener('click', () => {
-        let txt = document.getElementById('reminderText').value;
-        let date = document.getElementById('reminderDate').value;
-        if (txt) {
-            appState.reminders.push({ text: txt, date });
-            saveFullState();
-            renderReminders();
-            document.getElementById('reminderText').value = '';
-            document.getElementById('reminderDate').value = '';
-        }
-    });
-    document.getElementById('addVaccineBtn')?.addEventListener('click', () => {
-        let name = document.getElementById('vacName').value;
-        let date = document.getElementById('vacDate').value;
-        if (name) {
-            appState.vaccines.push({ name, date });
-            saveFullState();
-            renderVaccines();
-            document.getElementById('vacName').value = '';
-            document.getElementById('vacDate').value = '';
-        }
-    });
-    document.getElementById('addImageBtn')?.addEventListener('click', () => {
-        let url = document.getElementById('imgUrl').value.trim();
-        if (url) {
-            appState.gallery.push(url);
-            saveFullState();
-            renderGallery();
-            document.getElementById('imgUrl').value = '';
-        }
-    });
-    document.getElementById('saveDiaryBtn')?.addEventListener('click', addDiaryEntry);
-    document.getElementById('installAppBigBtn')?.addEventListener('click', () => {
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: 3 pontos → 'Adicionar à tela inicial'.";
-        document.getElementById('installInstructions').innerHTML = msg;
-        document.getElementById('installModal').classList.add('active');
-    });
-    document.getElementById('installAppBtn')?.addEventListener('click', () => {
-        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-        let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: menu → Adicionar à tela inicial.";
-        document.getElementById('installInstructions').innerHTML = msg;
-        document.getElementById('installModal').classList.add('active');
-    });
-    document.getElementById('closeModalBtn')?.addEventListener('click', () => document.getElementById('installModal').classList.remove('active'));
+  });
+  document.getElementById('completeOnboardingBtn').addEventListener('click', () => {
+    let name = document.getElementById('onboardingName').value.trim();
+    let weight = document.getElementById('onboardingWeight').value.trim();
+    if (!name || !weight) {
+      showToast("Preencha nome e peso");
+      return;
+    }
+    appState.petName = name;
+    appState.petWeight = weight;
+    appState.pet = selectedPet;
+    appState.idade = selectedAge;
+    appState.realAge = (selectedAge === 'filhote' ? '0-12 meses' : (selectedAge === 'idoso' ? '7+ anos' : '2-6 anos'));
+    if (!appState.checklist) appState.checklist = [{ text: "Passeio diário", checked: false }];
+    saveFullState();
+    document.getElementById('onboardingScreen').style.display = 'none';
+    document.getElementById('mainApp').style.display = 'block';
+    loadFullApp();
+    showToast(`Perfil ${appState.petName} carregado! Conteúdo 100% personalizado.`);
+  });
 });

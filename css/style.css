@@ -1,9 +1,4 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
+* { margin: 0; padding: 0; box-sizing: border-box; }
 body {
     background: linear-gradient(145deg, #e2e9dc 0%, #cdc2ad 100%);
     font-family: 'Inter', sans-serif;
@@ -11,7 +6,6 @@ body {
     padding: 1rem;
     min-height: 100vh;
 }
-
 .app-container {
     max-width: 1500px;
     margin: 0 auto;
@@ -21,7 +15,6 @@ body {
     box-shadow: 0 30px 45px rgba(0, 0, 0, 0.2);
     overflow: hidden;
 }
-
 .premium-header {
     background: #fff8ef;
     padding: 1rem 2rem;
@@ -31,7 +24,6 @@ body {
     flex-wrap: wrap;
     border-bottom: 3px solid #e2d0b5;
 }
-
 .logo-area h1 {
     font-family: 'Poppins', sans-serif;
     font-size: 1.9rem;
@@ -41,19 +33,8 @@ body {
     background-clip: text;
     color: transparent;
 }
-
-.logo-area p {
-    font-size: 0.75rem;
-    color: #7c6a50;
-}
-
-.header-actions {
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
+.logo-area p { font-size: 0.75rem; color: #7c6a50; }
+.header-actions { display: flex; gap: 12px; align-items: center; flex-wrap: wrap; }
 .btn-outline {
     background: transparent;
     border: 1.5px solid #cbbc9b;
@@ -63,12 +44,7 @@ body {
     cursor: pointer;
     transition: 0.2s;
 }
-
-.btn-outline:hover {
-    background: #e9ddce;
-    transform: scale(0.97);
-}
-
+.btn-outline:hover { background: #e9ddce; transform: scale(0.97); }
 .btn-primary {
     background: #b7d7c5;
     border: none;
@@ -79,12 +55,7 @@ body {
     box-shadow: 0 4px 8px rgba(0,0,0,0.05);
     transition: 0.2s;
 }
-
-.btn-primary:hover {
-    background: #9ec0aa;
-    transform: translateY(-1px);
-}
-
+.btn-primary:hover { background: #9ec0aa; transform: translateY(-1px); }
 .pet-profile-badge {
     background: #f3ede4;
     border-radius: 60px;
@@ -96,7 +67,6 @@ body {
     font-weight: 500;
     cursor: pointer;
 }
-
 .tabs-wrapper {
     overflow-x: auto;
     white-space: nowrap;
@@ -105,13 +75,7 @@ body {
     border-bottom: 1px solid #e7dccf;
     scrollbar-width: thin;
 }
-
-.tabs {
-    display: inline-flex;
-    gap: 0.2rem;
-    padding: 0.6rem 0;
-}
-
+.tabs { display: inline-flex; gap: 0.2rem; padding: 0.6rem 0; }
 .tab-btn {
     background: transparent;
     border: none;
@@ -124,38 +88,11 @@ body {
     color: #5a4e3a;
     font-family: 'Inter', sans-serif;
 }
-
-.tab-btn i {
-    margin-right: 8px;
-}
-
-.tab-btn.active {
-    background: #b7d7c5;
-    color: #2a4822;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-}
-
-.tab-pane {
-    display: none;
-    animation: fade 0.25s ease;
-    padding: 2rem;
-}
-
-.tab-pane.active-pane {
-    display: block;
-}
-
-@keyframes fade {
-    from {
-        opacity: 0;
-        transform: translateY(5px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
+.tab-btn i { margin-right: 8px; }
+.tab-btn.active { background: #b7d7c5; color: #2a4822; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+.tab-pane { display: none; animation: fade 0.25s ease; padding: 2rem; }
+.tab-pane.active-pane { display: block; }
+@keyframes fade { from { opacity: 0; transform: translateY(5px);} to { opacity: 1; transform: translateY(0);} }
 .card-premium {
     background: white;
     border-radius: 32px;
@@ -165,18 +102,8 @@ body {
     transition: 0.2s;
     border: 1px solid #efe2d0;
 }
-
-.grid-2col {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
-    gap: 1.8rem;
-}
-
-.golden-card {
-    background: #fff9ef;
-    border-left: 6px solid #e5bc7c;
-}
-
+.grid-2col { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1.8rem; }
+.golden-card { background: #fff9ef; border-left: 6px solid #e5bc7c; }
 .btn-icon {
     background: #b7d7c5;
     padding: 0.5rem 1.2rem;
@@ -186,24 +113,8 @@ body {
     border: none;
     margin-top: 12px;
 }
-
-.recipe-card,
-.training-card {
-    background: #fefcf7;
-    border-radius: 28px;
-    padding: 1.2rem;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.03);
-}
-
-.inline-badge {
-    background: #e3d9cd;
-    border-radius: 50px;
-    padding: 0.2rem 0.8rem;
-    font-size: 0.7rem;
-    font-weight: 600;
-}
-
+.recipe-card, .training-card { background: #fefcf7; border-radius: 28px; padding: 1.2rem; margin-bottom: 1rem; box-shadow: 0 2px 6px rgba(0,0,0,0.03); }
+.inline-badge { background: #e3d9cd; border-radius: 50px; padding: 0.2rem 0.8rem; font-size: 0.7rem; font-weight: 600; }
 .toast-msg {
     position: fixed;
     bottom: 20px;
@@ -220,7 +131,6 @@ body {
     transition: 0.2s;
     pointer-events: none;
 }
-
 .modal {
     position: fixed;
     top: 0;
@@ -236,12 +146,7 @@ body {
     opacity: 0;
     transition: 0.2s;
 }
-
-.modal.active {
-    visibility: visible;
-    opacity: 1;
-}
-
+.modal.active { visibility: visible; opacity: 1; }
 .modal-content {
     background: white;
     border-radius: 48px;
@@ -250,50 +155,8 @@ body {
     padding: 2rem;
     text-align: center;
 }
-
-footer {
-    background: #f2ecdf;
-    text-align: center;
-    padding: 1.2rem;
-    font-size: 0.75rem;
-    color: #6b5d48;
-}
-
-@media (max-width: 700px) {
-    .tab-pane {
-        padding: 1rem;
-    }
-    .premium-header {
-        flex-direction: column;
-        gap: 12px;
-        align-items: start;
-    }
-}
-
-input,
-select,
-textarea {
-    border: 1px solid #ddd0bc;
-    border-radius: 60px;
-    padding: 0.7rem 1rem;
-    font-family: inherit;
-    background: white;
-    width: 100%;
-    margin-bottom: 8px;
-}
-
-.diary-entry {
-    background: #f8f3ea;
-    border-radius: 24px;
-    padding: 1rem;
-    margin-bottom: 1rem;
-}
-
-.insight-badge {
-    background: #e6d5b9;
-    border-radius: 20px;
-    padding: 8px 12px;
-    font-size: 0.8rem;
-    margin-top: 12px;
-    display: inline-block;
-}
+footer { background: #f2ecdf; text-align: center; padding: 1.2rem; font-size: 0.75rem; color: #6b5d48; }
+@media (max-width: 700px) { .tab-pane { padding: 1rem; } .premium-header { flex-direction: column; gap: 12px; align-items: start; } }
+input, select, textarea { border: 1px solid #ddd0bc; border-radius: 60px; padding: 0.7rem 1rem; font-family: inherit; background: white; width: 100%; margin-bottom: 8px; }
+.diary-entry { background: #f8f3ea; border-radius: 24px; padding: 1rem; margin-bottom: 1rem; }
+.insight-badge { background: #e6d5b9; border-radius: 20px; padding: 8px 12px; font-size: 0.8rem; margin-top: 12px; display: inline-block; }

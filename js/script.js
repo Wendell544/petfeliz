@@ -4,7 +4,10 @@ let appState = {
     petName: "Meu Pet",
     realAge: "",
     petWeight: "",
-    checklist: [{ text: "Passeio diário (20min)", checked: false }, { text: "Escovação dental", checked: false }],
+    checklist: [
+        { text: "Passeio diário (20min)", checked: false },
+        { text: "Escovação dental", checked: false }
+    ],
     reminders: [],
     vaccines: [],
     gallery: [],
@@ -35,7 +38,7 @@ function loadState() {
     }
 }
 
-// ========== RECEITAS FUNCIONAIS ==========
+// ========== RECEITAS FUNCIONAIS (conteúdo premium) ==========
 const recipesData = {
     filhote: [
         { name: "Super Papinha Imunológica", ingredients: "Coração de frango, fígado, batata-doce, brócolis, óleo de coco", prep: "Cozer e triturar até pastoso", qty: "30-35g/kg", freq: "3-4x", tip: "Rico em ferro e zinco. Vitamina A para desenvolvimento ocular. Adicione probiótico 1x/dia.", why: "Coração fornece taurina (essencial), fígado = vitamina A natural, óleo de coco MCT para energia cerebral." },
@@ -317,91 +320,96 @@ function initTabs() {
     });
 }
 
-// Inicialização
-loadState();
-if (!appState.pet) appState.pet = "cachorro";
-if (!appState.idade) appState.idade = "adulto";
-if (!appState.petName) appState.petName = "Meu Pet";
-saveFullState();
-
-updateClientAreaDisplay();
-renderSolucoes();
-renderAllRecipes();
-renderFullTraining();
-renderNutrition();
-renderHealth();
-renderProTips();
-renderDiary();
-renderChecklist();
-renderReminders();
-renderVaccines();
-renderGallery();
-initTabs();
-
-// Event listeners dos modais e botões
-document.getElementById('saveProfileBtn')?.addEventListener('click', () => {
-    appState.petName = document.getElementById('profilePetName').value;
-    appState.pet = document.getElementById('profileType').value;
-    appState.idade = document.getElementById('profileAgeStage').value;
-    appState.realAge = document.getElementById('profileRealAge').value;
-    appState.petWeight = document.getElementById('profileWeight').value;
+// Event listeners após carregar o DOM
+document.addEventListener('DOMContentLoaded', () => {
+    loadState();
+    if (!appState.pet) appState.pet = "cachorro";
+    if (!appState.idade) appState.idade = "adulto";
+    if (!appState.petName) appState.petName = "Meu Pet";
     saveFullState();
+
     updateClientAreaDisplay();
     renderSolucoes();
-    document.getElementById('profileModal').classList.remove('active');
-    showToast("Perfil salvo! Conteúdo personalizado.");
-});
-document.getElementById('editPetProfileBtn')?.addEventListener('click', openProfileModal);
-document.getElementById('editProfileFromClient')?.addEventListener('click', openProfileModal);
-document.getElementById('profileSummaryBtn')?.addEventListener('click', openProfileModal);
-document.getElementById('addCheckItemBtn')?.addEventListener('click', () => {
-    let val = document.getElementById('newCheckItem').value.trim();
-    if (val) {
-        appState.checklist.push({ text: val, checked: false });
-        saveFullState();
-        renderChecklist();
-        document.getElementById('newCheckItem').value = '';
-    }
-});
-document.getElementById('addReminderBtn')?.addEventListener('click', () => {
-    let txt = document.getElementById('reminderText').value;
-    let date = document.getElementById('reminderDate').value;
-    if (txt) {
-        appState.reminders.push({ text: txt, date });
-        saveFullState();
-        renderReminders();
-        document.getElementById('reminderText').value = '';
-        document.getElementById('reminderDate').value = '';
-    }
-});
-document.getElementById('addVaccineBtn')?.addEventListener('click', () => {
-    let name = document.getElementById('vacName').value;
-    let date = document.getElementById('vacDate').value;
-    if (name) {
-        appState.vaccines.push({ name, date });
-        saveFullState();
-        renderVaccines();
-        document.getElementById('vacName').value = '';
-        document.getElementById('vacDate').value = '';
-    }
-});
-document.getElementById('addImageBtn')?.addEventListener('click', () => {
-    let url = document.getElementById('imgUrl').value.trim();
-    if (url) {
-        appState.gallery.push(url);
-        saveFullState();
-        renderGallery();
-        document.getElementById('imgUrl').value = '';
-    }
-});
-document.getElementById('saveDiaryBtn')?.addEventListener('click', addDiaryEntry);
+    renderAllRecipes();
+    renderFullTraining();
+    renderNutrition();
+    renderHealth();
+    renderProTips();
+    renderDiary();
+    renderChecklist();
+    renderReminders();
+    renderVaccines();
+    renderGallery();
+    initTabs();
 
-function showInstallInstructions() {
-    let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-    let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: 3 pontos → 'Adicionar à tela inicial'.";
-    document.getElementById('installInstructions').innerHTML = msg;
-    document.getElementById('installModal').classList.add('active');
-}
-document.getElementById('installAppBigBtn')?.addEventListener('click', showInstallInstructions);
-document.getElementById('installAppBtn')?.addEventListener('click', showInstallInstructions);
-document.getElementById('closeModalBtn')?.addEventListener('click', () => document.getElementById('installModal').classList.remove('active'));
+    // Eventos de modais
+    document.getElementById('saveProfileBtn')?.addEventListener('click', () => {
+        appState.petName = document.getElementById('profilePetName').value;
+        appState.pet = document.getElementById('profileType').value;
+        appState.idade = document.getElementById('profileAgeStage').value;
+        appState.realAge = document.getElementById('profileRealAge').value;
+        appState.petWeight = document.getElementById('profileWeight').value;
+        saveFullState();
+        updateClientAreaDisplay();
+        renderSolucoes();
+        document.getElementById('profileModal').classList.remove('active');
+        showToast("Perfil salvo! Conteúdo personalizado.");
+    });
+    document.getElementById('editPetProfileBtn')?.addEventListener('click', openProfileModal);
+    document.getElementById('editProfileFromClient')?.addEventListener('click', openProfileModal);
+    document.getElementById('profileSummaryBtn')?.addEventListener('click', openProfileModal);
+    document.getElementById('addCheckItemBtn')?.addEventListener('click', () => {
+        let val = document.getElementById('newCheckItem').value.trim();
+        if (val) {
+            appState.checklist.push({ text: val, checked: false });
+            saveFullState();
+            renderChecklist();
+            document.getElementById('newCheckItem').value = '';
+        }
+    });
+    document.getElementById('addReminderBtn')?.addEventListener('click', () => {
+        let txt = document.getElementById('reminderText').value;
+        let date = document.getElementById('reminderDate').value;
+        if (txt) {
+            appState.reminders.push({ text: txt, date });
+            saveFullState();
+            renderReminders();
+            document.getElementById('reminderText').value = '';
+            document.getElementById('reminderDate').value = '';
+        }
+    });
+    document.getElementById('addVaccineBtn')?.addEventListener('click', () => {
+        let name = document.getElementById('vacName').value;
+        let date = document.getElementById('vacDate').value;
+        if (name) {
+            appState.vaccines.push({ name, date });
+            saveFullState();
+            renderVaccines();
+            document.getElementById('vacName').value = '';
+            document.getElementById('vacDate').value = '';
+        }
+    });
+    document.getElementById('addImageBtn')?.addEventListener('click', () => {
+        let url = document.getElementById('imgUrl').value.trim();
+        if (url) {
+            appState.gallery.push(url);
+            saveFullState();
+            renderGallery();
+            document.getElementById('imgUrl').value = '';
+        }
+    });
+    document.getElementById('saveDiaryBtn')?.addEventListener('click', addDiaryEntry);
+    document.getElementById('installAppBigBtn')?.addEventListener('click', () => {
+        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: 3 pontos → 'Adicionar à tela inicial'.";
+        document.getElementById('installInstructions').innerHTML = msg;
+        document.getElementById('installModal').classList.add('active');
+    });
+    document.getElementById('installAppBtn')?.addEventListener('click', () => {
+        let isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+        let msg = isIOS ? "Safari: compartilhar → 'Adicionar à Tela de Início'." : "Chrome: menu → Adicionar à tela inicial.";
+        document.getElementById('installInstructions').innerHTML = msg;
+        document.getElementById('installModal').classList.add('active');
+    });
+    document.getElementById('closeModalBtn')?.addEventListener('click', () => document.getElementById('installModal').classList.remove('active'));
+});
